@@ -8,9 +8,12 @@ export const profile = {
     "I'm an Informatics Engineering student crafting elegant, functional and user-centered digital experiences.",
   location: 'BASED IN MALANG',
   work: 'WORKING WORLDWIDE',
-  email: 'hello@alsa.dev', // TODO: ganti dengan emailmu
-  instagram: '@alsa.dev', // TODO: ganti dengan handle-mu
+  email: 'nailahslsb@gmail.com', // TODO: ganti dengan emailmu
+  instagram: '@nailaahs', // TODO: ganti dengan handle-mu
   place: 'Malang, Indonesia',
+
+  photo: '/images/foto-porto.png',
+  photoContact: '/images/alsa-gemini.jpeg', // opsional
 };
 
 export const projects = [
