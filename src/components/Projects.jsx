@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Flower, Sparkle } from './Deco';
+import Photo from './Photo';
 import { Reveal, ease } from '../motion';
 import { projects } from '../data';
 
@@ -73,13 +74,21 @@ function Card({ p, index }) {
           transition={{ duration: 0.5, ease }}
         >
           <motion.div style={{ x: tx, y: ty }}>
-            <Mockup variant={p.variant} headline={p.headline} />
+            <Photo
+              src={p.image}
+              alt={p.title}
+              loading="lazy"
+              className="mock-img-el"
+              fallback={<Mockup variant={p.variant} headline={p.headline} />}
+            />
           </motion.div>
           <span className="project-open">
             View project <span>↗</span>
           </span>
         </motion.div>
       </a>
+
+      <p className="project-desc">{p.summary}</p>
 
       <div className="chips">
         {p.tags.map((t) => (

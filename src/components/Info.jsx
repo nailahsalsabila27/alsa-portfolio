@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Flower, Sparkle } from './Deco';
 import { Reveal, ease } from '../motion';
-import { process, tools, testimonials } from '../data';
+import { process, tools, moreTools, softSkills, journey } from '../data';
 
 export function ProcessAndTools() {
   return (
@@ -77,43 +77,54 @@ export function ProcessAndTools() {
             </motion.div>
           ))}
         </div>
-        <p className="more">&amp; MORE GREAT TOOLS</p>
+        <p className="more">{moreTools}</p>
       </div>
     </section>
   );
 }
 
-export function Testimonials() {
+export function Journey() {
   return (
-    <section className="panel kind">
-      <div className="section-head plain">
+    <section className="panel journey" id="journey">
+      <div className="section-head">
         <h2 className="h-label">
-          KIND WORDS <Sparkle size={13} className="spin" />
+          EXPERIENCE &amp; ACHIEVEMENTS <Sparkle size={13} className="spin" />
         </h2>
       </div>
-      <div className="kind-grid">
-        {testimonials.map((t, i) => (
-          <Reveal as="figure" key={t.name} delay={i * 0.12} className="quote">
-            <motion.span
-              className="quote-mark"
-              initial={{ scale: 0, rotate: -30 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 260, damping: 12, delay: 0.3 + i * 0.12 }}
-            >
-              “
-            </motion.span>
-            <blockquote>{t.quote}</blockquote>
-            <figcaption>
-              <motion.span className="mini-avatar" whileHover={{ rotate: 12, scale: 1.1 }}>
-                {t.initials}
-              </motion.span>
-              <span>
-                <b>{t.name}</b>
-                <small>{t.role}</small>
-              </span>
-            </figcaption>
+      <div className="journey-grid">
+        {journey.map((col, c) => (
+          <Reveal key={col.title} delay={c * 0.12} className="journey-col">
+            <h3 className="journey-title">{col.title}</h3>
+            <ul>
+              {col.items.map((it) => (
+                <motion.li key={it.name} whileHover={{ x: 6 }} transition={{ duration: 0.4, ease }}>
+                  <span className="journey-period">{it.period}</span>
+                  <strong>{it.name}</strong>
+                  <small>{it.place}</small>
+                  {it.points.length > 0 && (
+                    <ul className="journey-points">
+                      {it.points.map((pt) => (
+                        <li key={pt}>{pt}</li>
+                      ))}
+                    </ul>
+                  )}
+                </motion.li>
+              ))}
+            </ul>
           </Reveal>
+        ))}
+      </div>
+      <div className="soft">
+        <span className="soft-label">SOFT SKILLS</span>
+        {softSkills.map((s) => (
+          <motion.span
+            key={s}
+            className="chip"
+            whileHover={{ y: -3, rotate: -2 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 12 }}
+          >
+            {s.toUpperCase()}
+          </motion.span>
         ))}
       </div>
     </section>

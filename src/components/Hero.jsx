@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Avatar from './Avatar';
+import Photo from './Photo';
 import { Flower, Sparkle } from './Deco';
 import { Handwrite } from '../motion';
 import { ease } from '../motion';
@@ -91,7 +92,12 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.55, ease }}
         >
-          <Avatar fade hint />
+          <Photo
+            src={profile.photo}
+            alt={profile.fullName}
+            className="hero-photo"
+            fallback={<Avatar fade hint />}
+          />
         </motion.div>
 
         <motion.div

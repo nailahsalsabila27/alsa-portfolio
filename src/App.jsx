@@ -1,7 +1,7 @@
 import { MotionConfig } from 'framer-motion';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
-import { ProcessAndTools, Testimonials } from './components/Info';
+import { ProcessAndTools, Journey } from './components/Info';
 import Contact from './components/Contact';
 import { CursorTrail, FallingPetals, Flower, ScrollProgress } from './components/Deco';
 
@@ -17,7 +17,7 @@ export default function App() {
       <main className="frame">
         <Projects />
         <ProcessAndTools />
-        <Testimonials />
+        <Journey />
         <Contact />
       </main>
 

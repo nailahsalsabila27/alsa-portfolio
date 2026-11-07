@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Avatar from './Avatar';
+import Photo from './Photo';
 import { Flower, Sparkle } from './Deco';
 import { Handwrite, Reveal, ease } from '../motion';
 import { profile } from '../data';
@@ -74,7 +75,7 @@ export default function Contact() {
           <button type="button" className="link-row" onClick={copy}>
             <MailIcon /> <span>{profile.email.toUpperCase()}</span>
           </button>
-          <a className="link-row" href="#contact">
+          <a className="link-row" href={profile.instagramUrl} target="_blank" rel="noreferrer">
             <InstaIcon /> <span>{profile.instagram.toUpperCase()}</span>
           </a>
           <span className="link-row">
@@ -91,13 +92,19 @@ export default function Contact() {
           transition={{ duration: 0.9, ease }}
         >
           <span className="tape" />
-          <Avatar mono interactive={false} />
+          <Photo
+            src={profile.photoContact || profile.photo}
+            alt={profile.fullName}
+            className="portrait-img"
+            fallback={<Avatar mono interactive={false} />}
+          />
           <Flower size={96} className="portrait-flower sway" />
         </motion.div>
       </section>
 
       <footer className="thanks">
         THANK YOU FOR VISITING <Sparkle size={13} className="spin" />
+        <span className="thanks-name">© {profile.fullName}</span>
       </footer>
 
       <AnimatePresence>
