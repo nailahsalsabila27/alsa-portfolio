@@ -3,6 +3,8 @@
 export const profile = {
   name: 'Alsa', // tulisan tangan di hero
   fullName: "Na'ilah Salsabila Maulidiyah",
+  // Judul besar di hero (dibagi per baris supaya muat di layar)
+  titleLines: ["NA'ILAH SALSABILA", 'MAULIDIYAH'],
   role: 'WEB & MOBILE DEVELOPER',
   tagline: ['I DESIGN & BUILD DIGITAL', 'EXPERIENCES THAT', 'INSPIRE & CONNECT'],
   about:
@@ -16,30 +18,57 @@ export const profile = {
   instagramUrl: 'https://instagram.com/usernamekamu',
   place: 'Malang, Indonesia',
 
-  photo: 'foto-porto.png',
-  photoContact: 'alsa-gemini.jpeg',
+  // 📸 FOTO — taruh file di folder  public/images/  lalu tulis nama filenya di sini.
+  // Boleh ditulis '/images/foto.png', 'images/foto.png', atau cukup 'foto.png'.
+  // Kosongkan ('') untuk memakai ilustrasi kartun bawaan.
+  photo: '', // foto besar di hero (PNG tanpa background paling bagus)
+  photoContact: '', // foto kecil di bagian kontak (kosong = pakai photo)
 };
 
+// ⚠️ "languages" & "tools" tiap proyek adalah PERKIRAAN dari CV & ceritamu — cek dan koreksi
+// sesuai yang benar-benar kamu pakai. "contributions" diambil langsung dari CV.
 export const projects = [
   {
     no: '01',
     title: 'PROPERTYIQ',
+    fullTitle: 'PropertyIQ — Property Price Prediction Mobile App',
     type: 'Mobile App · PBL Semester 5 · 2026',
     headline: 'Predict Property Prices',
     summary:
       'Mobile app that predicts property prices — wireframes, frontend components, REST API and machine learning integration.',
+    description:
+      'PropertyIQ is a mobile application that helps users estimate property prices using machine learning. It was built as a Project-Based Learning (PBL) project in Semester 5, in a team — covering the whole flow from wireframe and frontend to backend integration and the prediction model.',
+    contributions: [
+      'Designed wireframes as the reference for the app’s interface structure and user experience.',
+      'Developed the mobile frontend components that support the property price prediction feature.',
+      'Integrated the app with backend services through REST API.',
+      'Integrated machine learning functionality to power the price prediction.',
+      'Collaborated with team members on development and testing of the app.',
+    ],
+    languages: ['Dart'],
+    tools: ['Flutter', 'Figma', 'REST API', 'Machine Learning', 'Android Studio', 'Git & GitHub'],
     variant: 1,
-    image: '', // contoh: 'propertyiq.png' (screenshot; kosong = mockup bawaan)
+    image: '', // contoh: 'propertyiq.png' (screenshot; kosong = tanpa gambar)
     tags: ['MOBILE APP', 'REST API', 'MACHINE LEARNING'],
-    url: '#', // link GitHub / demo
+    url: '#', // link GitHub / demo — kalau '#', tombol "View project" disembunyikan
   },
   {
     no: '02',
     title: 'TESYUK',
+    fullTitle: 'TesYuk — Website Platform for Testers & Developers',
     type: 'Website · PBL Semester 4 · 2026',
     headline: 'Test Together, Ship Better',
     summary:
       'Website platform for testers and developers — wireframe design and frontend implementation, built together with the team.',
+    description:
+      'TesYuk is a website platform that connects testers and developers — a place where apps can be tested by a crowd of testers. It was developed as a Project-Based Learning (PBL) project in Semester 4 by a team, from wireframe to a working interface.',
+    contributions: [
+      'Designed wireframes to define the website structure, navigation and interface layout.',
+      'Developed the website frontend based on the wireframes.',
+      'Collaborated with team members to implement features and keep the final result consistent with the design.',
+    ],
+    languages: ['PHP', 'JavaScript', 'HTML'],
+    tools: ['Laravel 11', 'Filament v3', 'Figma', 'VS Code', 'Git & GitHub'],
     variant: 2,
     image: '',
     tags: ['WIREFRAME', 'FRONTEND', 'WEBSITE'],
@@ -48,10 +77,20 @@ export const projects = [
   {
     no: '03',
     title: 'MULTIMEDIA & MOBILE LAB',
+    fullTitle: 'Website of the Multimedia and Mobile Technology Laboratory',
     type: 'Website · PBL Semester 3 · 2025',
     headline: 'Multimedia & Mobile Technology Lab',
     summary:
       'Website for the Multimedia and Mobile Technology Laboratory — wireframes and frontend based on the lab’s needs.',
+    description:
+      'A functional website for the Multimedia and Mobile Technology Laboratory, built as a Project-Based Learning (PBL) project in Semester 3. The design and features follow the needs of the laboratory.',
+    contributions: [
+      'Designed website wireframes based on the laboratory’s needs.',
+      'Developed the website frontend to implement the user interface design.',
+      'Collaborated with team members to build a functional website that fits the laboratory’s needs.',
+    ],
+    languages: ['HTML', 'JavaScript'],
+    tools: ['Figma', 'VS Code', 'Git & GitHub'],
     variant: 3,
     image: '',
     tags: ['WIREFRAME', 'FRONTEND', 'WEBSITE'],

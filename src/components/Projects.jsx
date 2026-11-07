@@ -1,6 +1,8 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useCallback, useState } from 'react';
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Flower, Sparkle } from './Deco';
 import Photo from './Photo';
+import ProjectModal from './ProjectModal';
 import { Reveal, ease } from '../motion';
 import { projects } from '../data';
 
@@ -34,7 +36,7 @@ function Mockup({ variant, headline }) {
   );
 }
 
-function Card({ p, index }) {
+function Card({ p, index, onOpen }) {
   const rx = useMotionValue(0);
   const ry = useMotionValue(0);
   const srx = useSpring(rx, { stiffness: 160, damping: 18 });
@@ -64,13 +66,20 @@ function Card({ p, index }) {
         </div>
       </div>
 
-      <a className="project-link" href={p.url} aria-label={`Open ${p.title}`}>
+      <button
+        type="button"
+        className="project-link"
+        aria-haspopup="dialog"
+        aria-label={`View details of ${p.title}`}
+        onClick={() => onOpen(p)}
+      >
         <motion.div
           className="tilt"
           style={{ rotateX: srx, rotateY: sry, transformPerspective: 900 }}
           onPointerMove={onMove}
           onPointerLeave={reset}
           whileHover={{ scale: 1.025 }}
+          whileTap={{ scale: 0.98 }}
           transition={{ duration: 0.5, ease }}
         >
           <motion.div style={{ x: tx, y: ty }}>
@@ -83,16 +92,21 @@ function Card({ p, index }) {
             />
           </motion.div>
           <span className="project-open">
-            View project <span>↗</span>
+            View details <span>+</span>
           </span>
         </motion.div>
-      </a>
+      </button>
 
       <p className="project-desc">{p.summary}</p>
 
       <div className="chips">
         {p.tags.map((t) => (
-          <motion.span key={t} className="chip" whileHover={{ y: -3, rotate: -2 }} transition={{ type: 'spring', stiffness: 400, damping: 12 }}>
+          <motion.span
+            key={t}
+            className="chip"
+            whileHover={{ y: -3, rotate: -2 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 12 }}
+          >
             {t}
           </motion.span>
         ))}
@@ -102,21 +116,26 @@ function Card({ p, index }) {
 }
 
 export default function Projects() {
+  const [active, setActive] = useState(null);
+  const close = useCallback(() => setActive(null), []);
+
   return (
     <section className="panel" id="projects">
       <div className="section-head">
         <h2 className="h-label">
           SELECTED PROJECTS <Sparkle size={13} className="spin" />
         </h2>
-        <a className="link-arrow" href="#projects">
-          VIEW ALL PROJECTS <span>→</span>
-        </a>
+        <span className="link-arrow">CLICK A PROJECT FOR DETAILS</span>
       </div>
       <div className="projects-grid">
         {projects.map((p, i) => (
-          <Card key={p.no} p={p} index={i} />
+          <Card key={p.no} p={p} index={i} onOpen={setActive} />
         ))}
       </div>
+
+      <AnimatePresence>
+        {active && <ProjectModal key={active.no} project={active} onClose={close} />}
+      </AnimatePresence>
     </section>
   );
 }

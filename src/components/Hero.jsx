@@ -6,8 +6,6 @@ import { Handwrite } from '../motion';
 import { ease } from '../motion';
 import { profile } from '../data';
 
-const LETTERS = 'PORTFOLIO'.split('');
-
 function Globe() {
   return (
     <svg className="globe" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
@@ -31,19 +29,30 @@ export default function Hero() {
         <span>CREATIVE PORTFOLIO</span>
       </motion.div>
 
-      <h1 className="hero-title" aria-label="Portfolio">
-        {LETTERS.map((l, i) => (
-          <span className="letter-mask" key={i} aria-hidden="true">
-            <motion.span
-              className="letter"
-              initial={{ y: '112%', rotate: 5 }}
-              animate={{ y: 0, rotate: 0 }}
-              transition={{ duration: 1.1, delay: 0.15 + i * 0.07, ease }}
-            >
-              {l}
-            </motion.span>
-          </span>
-        ))}
+      <h1 className="hero-title" aria-label={profile.fullName}>
+        {profile.titleLines.map((line, li) => {
+          const offset = profile.titleLines.slice(0, li).join('').length;
+          return (
+            <div className={`title-line title-line-${li + 1}`} key={line} aria-hidden="true">
+              {line.split('').map((l, i) =>
+                l === ' ' ? (
+                  <span className="letter-space" key={i} />
+                ) : (
+                  <span className="letter-mask" key={i}>
+                    <motion.span
+                      className="letter"
+                      initial={{ y: '112%', rotate: 5 }}
+                      animate={{ y: 0, rotate: 0 }}
+                      transition={{ duration: 1.1, delay: 0.15 + (offset + i) * 0.05, ease }}
+                    >
+                      {l}
+                    </motion.span>
+                  </span>
+                )
+              )}
+            </div>
+          );
+        })}
       </h1>
 
       {/* bunga dekoratif di tepi */}
