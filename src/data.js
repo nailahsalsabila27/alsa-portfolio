@@ -4,7 +4,7 @@ export const profile = {
   name: 'Alsa', // tulisan tangan di hero
   fullName: "Na'ilah Salsabila Maulidiyah",
   // Judul besar di hero (dibagi per baris supaya muat di layar)
-  titleLines: ["NA'ILAH SALSABILA", 'MAULIDIYAH'],
+  titleLines: ["NA'ILAH SALSABILA MAULIDIYAH"],
   role: 'WEB & MOBILE DEVELOPER',
   tagline: ['I DESIGN & BUILD DIGITAL', 'EXPERIENCES THAT', 'INSPIRE & CONNECT'],
   about:
