@@ -3,8 +3,10 @@
 export const profile = {
   name: 'Alsa', // tulisan tangan di hero
   fullName: "Na'ilah Salsabila Maulidiyah",
-  // Judul besar di hero (dibagi per baris supaya muat di layar)
+  // Judul besar di hero. Satu item = satu baris. Ukuran font otomatis menyesuaikan lebar layar.
   titleLines: ["NA'ILAH SALSABILA MAULIDIYAH"],
+  // Besar-kecil judul: 1 = selebar penuh, 0.85 = 85% lebar, dst.
+  titleScale: 1,
   role: 'WEB & MOBILE DEVELOPER',
   tagline: ['I DESIGN & BUILD DIGITAL', 'EXPERIENCES THAT', 'INSPIRE & CONNECT'],
   about:
@@ -13,13 +15,16 @@ export const profile = {
   work: 'POLITEKNIK NEGERI MALANG',
 
   // TODO: CV tidak mencantumkan email / Instagram — isi dengan milikmu.
-  email: 'nailahslsb@gmail.com',
-  instagram: '@nailaahs',
-  instagramUrl: 'https://www.instagram.com/nailaahs?srtk=YTgxYnY3c2Ixejd4',
+  email: 'emailkamu@gmail.com',
+  instagram: '@usernamekamu',
+  instagramUrl: 'https://instagram.com/usernamekamu',
   place: 'Malang, Indonesia',
 
-  photo: 'alsa-porto.png',
-  photoContact: 'alsa-gemini.jpeg',
+  // 📸 FOTO — taruh file di folder  public/images/  lalu tulis nama filenya di sini.
+  // Boleh ditulis '/images/foto.png', 'images/foto.png', atau cukup 'foto.png'.
+  // Kosongkan ('') untuk memakai ilustrasi kartun bawaan.
+  photo: '', // foto besar di hero (PNG tanpa background paling bagus)
+  photoContact: '', // foto kecil di bagian kontak (kosong = pakai photo)
 };
 
 // ⚠️ "languages" & "tools" tiap proyek adalah PERKIRAAN dari CV & ceritamu — cek dan koreksi

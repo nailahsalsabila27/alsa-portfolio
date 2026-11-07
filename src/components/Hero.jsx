@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Avatar from './Avatar';
 import Photo from './Photo';
@@ -16,7 +17,42 @@ function Globe() {
   );
 }
 
+/**
+ * Mengatur ukuran font judul otomatis supaya baris pertama pas selebar layar
+ * (jadi nama sepanjang apa pun tetap satu baris). Besar-kecilnya bisa diatur
+ * lewat `titleScale` di data.js (1 = penuh, 0.8 = 80% lebar).
+ */
+function useFitTitle(ref, scale = 1) {
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return undefined;
+    const fit = () => {
+      const line = el.querySelector('.title-line');
+      if (!line) return;
+      const avail = el.clientWidth;
+      el.style.fontSize = '100px';
+      const natural = Array.from(line.children).reduce(
+        (sum, c) => sum + c.getBoundingClientRect().width,
+        0
+      );
+      if (!natural || !avail) return;
+      el.style.fontSize = `${Math.max(12, Math.min(150, ((100 * avail) / natural) * scale))}px`;
+    };
+    fit();
+    document.fonts?.ready.then(fit);
+    document.fonts?.addEventListener?.('loadingdone', fit);
+    window.addEventListener('resize', fit);
+    return () => {
+      document.fonts?.removeEventListener?.('loadingdone', fit);
+      window.removeEventListener('resize', fit);
+    };
+  }, [ref, scale]);
+}
+
 export default function Hero() {
+  const titleRef = useRef(null);
+  useFitTitle(titleRef, profile.titleScale ?? 1);
+
   return (
     <header className="hero">
       <motion.div
@@ -29,7 +65,7 @@ export default function Hero() {
         <span>CREATIVE PORTFOLIO</span>
       </motion.div>
 
-      <h1 className="hero-title" aria-label={profile.fullName}>
+      <h1 className="hero-title" ref={titleRef} aria-label={profile.fullName}>
         {profile.titleLines.map((line, li) => {
           const offset = profile.titleLines.slice(0, li).join('').length;
           return (

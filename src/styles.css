@@ -1531,3 +1531,20 @@ button.link-row:hover svg {
 .process {
   overflow: hidden;
 }
+
+/* ───────── Judul satu baris (ukuran diatur otomatis oleh Hero.jsx) ───────── */
+.hero-title {
+  font-size: clamp(14px, 5.2vw, 84px); /* cadangan sebelum JS jalan */
+}
+.title-line {
+  justify-content: space-between;
+}
+.title-line .letter {
+  letter-spacing: 0.04em;
+}
+.hero-body {
+  margin-top: -2vw;
+}
+.title-line > * {
+  flex: none; /* huruf tidak boleh menyusut, supaya lebar aslinya bisa diukur */
+}
