@@ -13,12 +13,12 @@ export const profile = {
   work: 'POLITEKNIK NEGERI MALANG',
 
   // TODO: CV tidak mencantumkan email / Instagram — isi dengan milikmu.
-  email: 'emailkamu@gmail.com',
-  instagram: '@usernamekamu',
-  instagramUrl: 'https://instagram.com/usernamekamu',
+  email: 'nailahslsb@gmail.com',
+  instagram: '@nailaahs',
+  instagramUrl: 'https://www.instagram.com/nailaahs?srtk=YTgxYnY3c2Ixejd4',
   place: 'Malang, Indonesia',
 
-  photo: 'foto-porto.png',
+  photo: 'alsa-porto.png',
   photoContact: 'alsa-gemini.jpeg',
 };
 
