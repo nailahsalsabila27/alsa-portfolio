@@ -18,11 +18,8 @@ export const profile = {
   instagramUrl: 'https://instagram.com/usernamekamu',
   place: 'Malang, Indonesia',
 
-  // 📸 FOTO — taruh file di folder  public/images/  lalu tulis nama filenya di sini.
-  // Boleh ditulis '/images/foto.png', 'images/foto.png', atau cukup 'foto.png'.
-  // Kosongkan ('') untuk memakai ilustrasi kartun bawaan.
-  photo: '', // foto besar di hero (PNG tanpa background paling bagus)
-  photoContact: '', // foto kecil di bagian kontak (kosong = pakai photo)
+  photo: 'foto-porto.png',
+  photoContact: 'alsa-gemini.jpeg',
 };
 
 // ⚠️ "languages" & "tools" tiap proyek adalah PERKIRAAN dari CV & ceritamu — cek dan koreksi
