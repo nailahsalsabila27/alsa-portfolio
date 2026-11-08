@@ -68,9 +68,9 @@ export const projects = [
       'Developed the website frontend based on the wireframes.',
       'Collaborated with team members to implement features and keep the final result consistent with the design.',
     ],
-    languages: ['PHP', 'JavaScript', 'HTML'],
+    languages: ['PHP', 'JavaScript', 'HTML', 'CSS'],
     tools: ['Laravel 11', 'Filament v3', 'Figma', 'VS Code', 'Git & GitHub'],
-    images: ['tesyuk-1.png', 'tesyuk-2.png', 'tesyuk-3.png'],
+    images: ['TesYuk.png', 'tesyuk-2.png', 'tesyuk-3.png'],
     url: '#',
   },
   {
@@ -87,9 +87,9 @@ export const projects = [
       'Developed the website frontend to implement the user interface design.',
       'Collaborated with team members to build a functional website that fits the laboratory’s needs.',
     ],
-    languages: ['HTML', 'JavaScript'],
+    languages: ['HTML', 'PHP', 'CSS', 'JavaScript'],
     tools: ['Figma', 'VS Code', 'Git & GitHub'],
-    images: ['lab-multimedia-1.png', 'lab-multimedia-2.png', 'lab-multimedia-3.png'],
+    images: ['MMT.png', 'lab-multimedia-2.png', 'lab-multimedia-3.png'],
     url: '#',
   },
 ];
@@ -168,39 +168,6 @@ export const journey = [
         place: 'SMAS Ar-Rohmah Putri International Islamic Boarding School',
         period: '2021 – 2024',
         url: 'https://www.arrohmah.co.id/',
-      },
-    ],
-  },
-  {
-    title: 'ACHIEVEMENTS',
-    listLabel: 'HIGHLIGHTS',
-    items: [
-      {
-        name: 'Finalist — Airlangga Maritime Week',
-        place: 'Universitas Airlangga',
-        period: '2023',
-        description:
-          'Finalist at Airlangga Maritime Week, Universitas Airlangga (2023), with a solar stove innovation as an alternative energy solution, supported by a paper.',
-        points: ['Solar stove innovation as an alternative energy solution.', 'Supporting paper submitted for the competition.'],
-        photos: ['amw-1.jpg', 'amw-2.jpg', 'amw-3.jpg'],
-      },
-      {
-        name: 'Delegate — Youth Innovation Forum',
-        place: 'Malaysia, Singapore & Thailand',
-        period: '2022',
-        description:
-          'Delegate at an SDGs-themed Youth Innovation Forum held across Malaysia, Singapore and Thailand (2022), focused on youth innovation and international collaboration.',
-        points: ['SDGs-themed youth innovation forum.', 'International collaboration with youth from other countries.'],
-        photos: ['yif-1.jpg', 'yif-2.jpg', 'yif-3.jpg'],
-      },
-      {
-        name: 'AIESEC Future Leaders — Batch 9',
-        place: 'Universitas Brawijaya',
-        period: '2026',
-        description:
-          'Participant of AIESEC Future Leaders Batch 9 at Universitas Brawijaya (2026), a program on leadership, self-development and professional writing.',
-        points: ['Leadership and self-development training.', 'Professional CV and essay writing.'],
-        photos: ['AIESEC1.jpeg', 'AIESEC2.jpeg', 'AIESEC3.jpg', 'AIESEC4.jpg', 'AIESEC5.jpg'],
       },
     ],
   },
