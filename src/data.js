@@ -18,11 +18,11 @@ export const profile = {
   email: 'nailahslsb@gmail.com',
   instagram: '@nailaahs',
   instagramUrl: 'https://www.instagram.com/nailaahs?srtk=YTgxYnY3c2Ixejd4',
-  linkedin: 'linkedin.com/in/nailah-salsabila-maulidiyah', // teks yang tampil di bagian kontak
-  linkedinUrl: 'https://www.linkedin.com/in/usernamekamu', // TODO: ganti dengan link LinkedIn-mu
+  linkedin: 'linkedin.com/in/na-ilah-salsabila-maulidiyah', // teks yang tampil di bagian kontak
+  linkedinUrl: 'www.linkedin.com/in/na-ilah-salsabila-maulidiyah-847627378', // TODO: ganti dengan link LinkedIn-mu
   place: 'Malang, Indonesia',
 
-  photo: 'foto-porto.png',
+  photo: 'alsa-porto.png',
   photoContact: 'alsa-gemini.jpeg',
 };
 
@@ -150,7 +150,7 @@ export const journey = [
           'Coordinated HR activities and documented member performance evaluations.',
         ],
         // 5 foto kegiatan (ganti nama file sesuai punyamu)
-        photos: ['hr-1.jpg', 'hr-2.jpg', 'hr-3.jpg', 'hr-4.jpg', 'hr-5.jpg'],
+        photos: ['Poljar1.jpeg', 'Poljar2.jpeg', 'hr-2.jpg', 'hr-3.jpg', 'hr-4.jpg', 'hr-5.jpg'],
       },
     ],
   },
@@ -167,7 +167,7 @@ export const journey = [
         name: 'Natural Science (IPA)',
         place: 'SMAS Ar-Rohmah Putri International Islamic Boarding School',
         period: '2021 – 2024',
-        url: '', // TODO: isi link website resmi sekolahmu
+        url: 'https://www.arrohmah.co.id/',
       },
     ],
   },
@@ -200,7 +200,7 @@ export const journey = [
         description:
           'Participant of AIESEC Future Leaders Batch 9 at Universitas Brawijaya (2026), a program on leadership, self-development and professional writing.',
         points: ['Leadership and self-development training.', 'Professional CV and essay writing.'],
-        photos: ['aiesec-1.jpg', 'aiesec-2.jpg', 'aiesec-3.jpg'],
+        photos: ['AIESEC1.jpeg', 'AIESEC2.jpeg', 'AIESEC3.jpg', 'AIESEC4.jpg', 'AIESEC5.jpg'],
       },
     ],
   },
