@@ -1,116 +1,43 @@
 import { useCallback, useState } from 'react';
-import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Flower, Sparkle } from './Deco';
-import Photo from './Photo';
-import ProjectModal from './ProjectModal';
-import { Reveal, ease } from '../motion';
+import DetailModal from './DetailModal';
+import { Reveal } from '../motion';
 import { projects } from '../data';
 
-function Mockup({ variant, headline }) {
-  return (
-    <div className={`mock mock-${variant}`}>
-      <div className="mock-bar">
-        <i />
-        <i />
-        <i />
-        <span />
-      </div>
-      <div className="mock-body">
-        <div className="mock-copy">
-          <h4>{headline}</h4>
-          <p />
-          <p className="short" />
-          <b className="mock-btn" />
-        </div>
-        <div className="mock-art">
-          <Flower size={variant === 2 ? 74 : 84} petals={variant + 7} className="float" />
-          <Sparkle size={12} className="mock-spark twinkle" />
-        </div>
-      </div>
-      <div className="mock-cards">
-        <u />
-        <u />
-        <u />
-      </div>
-    </div>
-  );
-}
-
+/* Kartu proyek: hanya nomor, judul, dan deskripsi singkat. Detail ada di pop-up. */
 function Card({ p, index, onOpen }) {
-  const rx = useMotionValue(0);
-  const ry = useMotionValue(0);
-  const srx = useSpring(rx, { stiffness: 160, damping: 18 });
-  const sry = useSpring(ry, { stiffness: 160, damping: 18 });
-  const tx = useTransform(sry, (v) => v * -1.2);
-  const ty = useTransform(srx, (v) => v * 1.2);
-
-  const onMove = (e) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width - 0.5;
-    const py = (e.clientY - r.top) / r.height - 0.5;
-    ry.set(px * 9);
-    rx.set(py * -9);
-  };
-  const reset = () => {
-    rx.set(0);
-    ry.set(0);
-  };
-
   return (
     <Reveal as="article" delay={index * 0.12} className="project">
-      <div className="project-head">
-        <span className="project-no">{p.no}</span>
-        <div>
-          <h3>{p.title}</h3>
-          <small>{p.type}</small>
-        </div>
-      </div>
-
-      <button
+      <motion.button
         type="button"
-        className="project-link"
+        className="project-card"
         aria-haspopup="dialog"
         aria-label={`View details of ${p.title}`}
         onClick={() => onOpen(p)}
+        whileHover="hover"
+        whileTap={{ scale: 0.985 }}
       >
-        <motion.div
-          className="tilt"
-          style={{ rotateX: srx, rotateY: sry, transformPerspective: 900 }}
-          onPointerMove={onMove}
-          onPointerLeave={reset}
-          whileHover={{ scale: 1.025 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ duration: 0.5, ease }}
+        <motion.span
+          className="project-card-flower"
+          variants={{ hover: { rotate: 40, scale: 1.12, opacity: 0.9 } }}
+          initial={{ rotate: 0, scale: 1, opacity: 0.45 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.div style={{ x: tx, y: ty }}>
-            <Photo
-              src={p.image}
-              alt={p.title}
-              loading="lazy"
-              className="mock-img-el"
-              fallback={<Mockup variant={p.variant} headline={p.headline} />}
-            />
-          </motion.div>
-          <span className="project-open">
-            View details <span>+</span>
-          </span>
-        </motion.div>
-      </button>
+          <Flower size={120} petals={8 + (index % 3)} />
+        </motion.span>
 
-      <p className="project-desc">{p.summary}</p>
+        <span className="project-no">{p.no}</span>
+        <h3>{p.title}</h3>
+        <p className="project-desc">{p.summary}</p>
 
-      <div className="chips">
-        {p.tags.map((t) => (
-          <motion.span
-            key={t}
-            className="chip"
-            whileHover={{ y: -3, rotate: -2 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 12 }}
-          >
-            {t}
-          </motion.span>
-        ))}
-      </div>
+        <span className="project-more">
+          VIEW DETAILS
+          <motion.i variants={{ hover: { x: 6, rotate: 90 } }} transition={{ duration: 0.5 }}>
+            +
+          </motion.i>
+        </span>
+      </motion.button>
     </Reveal>
   );
 }
@@ -134,7 +61,26 @@ export default function Projects() {
       </div>
 
       <AnimatePresence>
-        {active && <ProjectModal key={active.no} project={active} onClose={close} />}
+        {active && (
+          <DetailModal
+            key={active.no}
+            badge={active.no}
+            title={active.title}
+            subtitle={active.fullTitle}
+            meta={active.type}
+            images={active.images}
+            description={active.description}
+            descLabel="ABOUT THE PROJECT"
+            list={active.contributions}
+            listLabel="WHAT I DID"
+            groups={[
+              { label: 'PROGRAMMING LANGUAGES', items: active.languages, solid: true },
+              { label: 'TOOLS & FRAMEWORKS', items: active.tools },
+            ]}
+            link={{ url: active.url, label: 'VIEW PROJECT' }}
+            onClose={close}
+          />
+        )}
       </AnimatePresence>
     </section>
   );

@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
+import { useCallback, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Flower, Sparkle } from './Deco';
+import DetailModal from './DetailModal';
 import { Reveal, ease } from '../motion';
 import { process, tools, moreTools, softSkills, journey } from '../data';
 
@@ -83,13 +85,48 @@ export function ProcessAndTools() {
   );
 }
 
+function JourneyItem({ it, onOpen }) {
+  const clickable = Boolean(it.description);
+  const body = (
+    <>
+      <span className="journey-period">{it.period}</span>
+      <strong>{it.name}</strong>
+      <small>{it.place}</small>
+    </>
+  );
+
+  return (
+    <motion.li whileHover={{ x: 6 }} transition={{ duration: 0.4, ease }}>
+      {clickable ? (
+        <button type="button" className="journey-btn" aria-haspopup="dialog" onClick={() => onOpen(it)}>
+          {body}
+          <span className="journey-more">
+            VIEW DETAILS <i>+</i>
+          </span>
+        </button>
+      ) : (
+        body
+      )}
+      {it.url && (
+        <a className="journey-link" href={it.url} target="_blank" rel="noreferrer">
+          VISIT WEBSITE <span>↗</span>
+        </a>
+      )}
+    </motion.li>
+  );
+}
+
 export function Journey() {
+  const [active, setActive] = useState(null); // { item, listLabel }
+  const close = useCallback(() => setActive(null), []);
+
   return (
     <section className="panel journey" id="journey">
       <div className="section-head">
         <h2 className="h-label">
           EXPERIENCE &amp; ACHIEVEMENTS <Sparkle size={13} className="spin" />
         </h2>
+        <span className="link-arrow">CLICK AN ITEM FOR DETAILS</span>
       </div>
       <div className="journey-grid">
         {journey.map((col, c) => (
@@ -97,18 +134,11 @@ export function Journey() {
             <h3 className="journey-title">{col.title}</h3>
             <ul>
               {col.items.map((it) => (
-                <motion.li key={it.name} whileHover={{ x: 6 }} transition={{ duration: 0.4, ease }}>
-                  <span className="journey-period">{it.period}</span>
-                  <strong>{it.name}</strong>
-                  <small>{it.place}</small>
-                  {it.points.length > 0 && (
-                    <ul className="journey-points">
-                      {it.points.map((pt) => (
-                        <li key={pt}>{pt}</li>
-                      ))}
-                    </ul>
-                  )}
-                </motion.li>
+                <JourneyItem
+                  key={it.name}
+                  it={it}
+                  onOpen={(item) => setActive({ item, listLabel: col.listLabel })}
+                />
               ))}
             </ul>
           </Reveal>
@@ -127,6 +157,24 @@ export function Journey() {
           </motion.span>
         ))}
       </div>
+
+      <AnimatePresence>
+        {active && (
+          <DetailModal
+            key={active.item.name}
+            badge="✦"
+            title={active.item.name}
+            subtitle={active.item.place}
+            meta={[active.item.period, active.item.location].filter(Boolean).join(' · ')}
+            images={active.item.photos}
+            description={active.item.description}
+            descLabel="ABOUT"
+            list={active.item.points}
+            listLabel={active.listLabel}
+            onClose={close}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

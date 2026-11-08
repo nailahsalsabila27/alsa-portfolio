@@ -19,6 +19,12 @@ const InstaIcon = () => (
     <circle cx="17" cy="7" r="0.8" fill="currentColor" />
   </svg>
 );
+const LinkedInIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+    <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
+    <path d="M8 10.5V16M8 7.8v.1M11.5 16v-3.2a2.2 2.2 0 0 1 4.4 0V16M11.5 10.5V16" strokeLinecap="round" />
+  </svg>
+);
 const PinIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
     <path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.800 12 21 12 21Z" />
@@ -77,6 +83,9 @@ export default function Contact() {
           </button>
           <a className="link-row" href={profile.instagramUrl} target="_blank" rel="noreferrer">
             <InstaIcon /> <span>{profile.instagram.toUpperCase()}</span>
+          </a>
+          <a className="link-row" href={profile.linkedinUrl} target="_blank" rel="noreferrer">
+            <LinkedInIcon /> <span>{profile.linkedin.toUpperCase()}</span>
           </a>
           <span className="link-row">
             <PinIcon /> <span>{profile.place.toUpperCase()}</span>

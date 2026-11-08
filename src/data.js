@@ -15,27 +15,29 @@ export const profile = {
   work: 'POLITEKNIK NEGERI MALANG',
 
   // TODO: CV tidak mencantumkan email / Instagram — isi dengan milikmu.
-  email: 'emailkamu@gmail.com',
-  instagram: '@usernamekamu',
-  instagramUrl: 'https://instagram.com/usernamekamu',
+  email: 'nailahslsb@gmail.com',
+  instagram: '@nailaahs',
+  instagramUrl: 'https://www.instagram.com/nailaahs?srtk=YTgxYnY3c2Ixejd4',
+  linkedin: 'linkedin.com/in/nailah-salsabila-maulidiyah', // teks yang tampil di bagian kontak
+  linkedinUrl: 'https://www.linkedin.com/in/usernamekamu', // TODO: ganti dengan link LinkedIn-mu
   place: 'Malang, Indonesia',
 
-  // 📸 FOTO — taruh file di folder  public/images/  lalu tulis nama filenya di sini.
-  // Boleh ditulis '/images/foto.png', 'images/foto.png', atau cukup 'foto.png'.
-  // Kosongkan ('') untuk memakai ilustrasi kartun bawaan.
-  photo: '', // foto besar di hero (PNG tanpa background paling bagus)
-  photoContact: '', // foto kecil di bagian kontak (kosong = pakai photo)
+  photo: 'foto-porto.png',
+  photoContact: 'alsa-gemini.jpeg',
 };
 
 // ⚠️ "languages" & "tools" tiap proyek adalah PERKIRAAN dari CV & ceritamu — cek dan koreksi
 // sesuai yang benar-benar kamu pakai. "contributions" diambil langsung dari CV.
+//
+// 🖼️ images = screenshot / foto website proyek (boleh banyak). Taruh file di  public/images/
+//    lalu tulis namanya. File yang belum ada otomatis disembunyikan, jadi aman diisi dulu.
+//    Gambar pertama tampil besar. Subfolder boleh, mis. 'proyek/propertyiq-1.png'.
 export const projects = [
   {
     no: '01',
     title: 'PROPERTYIQ',
     fullTitle: 'PropertyIQ — Property Price Prediction Mobile App',
     type: 'Mobile App · PBL Semester 5 · 2026',
-    headline: 'Predict Property Prices',
     summary:
       'Mobile app that predicts property prices — wireframes, frontend components, REST API and machine learning integration.',
     description:
@@ -49,9 +51,7 @@ export const projects = [
     ],
     languages: ['Dart'],
     tools: ['Flutter', 'Figma', 'REST API', 'Machine Learning', 'Android Studio', 'Git & GitHub'],
-    variant: 1,
-    image: '', // contoh: 'propertyiq.png' (screenshot; kosong = tanpa gambar)
-    tags: ['MOBILE APP', 'REST API', 'MACHINE LEARNING'],
+    images: ['propertyiq-1.png', 'propertyiq-2.png', 'propertyiq-3.png'],
     url: '#', // link GitHub / demo — kalau '#', tombol "View project" disembunyikan
   },
   {
@@ -59,7 +59,6 @@ export const projects = [
     title: 'TESYUK',
     fullTitle: 'TesYuk — Website Platform for Testers & Developers',
     type: 'Website · PBL Semester 4 · 2026',
-    headline: 'Test Together, Ship Better',
     summary:
       'Website platform for testers and developers — wireframe design and frontend implementation, built together with the team.',
     description:
@@ -71,9 +70,7 @@ export const projects = [
     ],
     languages: ['PHP', 'JavaScript', 'HTML'],
     tools: ['Laravel 11', 'Filament v3', 'Figma', 'VS Code', 'Git & GitHub'],
-    variant: 2,
-    image: '',
-    tags: ['WIREFRAME', 'FRONTEND', 'WEBSITE'],
+    images: ['tesyuk-1.png', 'tesyuk-2.png', 'tesyuk-3.png'],
     url: '#',
   },
   {
@@ -81,7 +78,6 @@ export const projects = [
     title: 'MULTIMEDIA & MOBILE LAB',
     fullTitle: 'Website of the Multimedia and Mobile Technology Laboratory',
     type: 'Website · PBL Semester 3 · 2025',
-    headline: 'Multimedia & Mobile Technology Lab',
     summary:
       'Website for the Multimedia and Mobile Technology Laboratory — wireframes and frontend based on the lab’s needs.',
     description:
@@ -93,9 +89,7 @@ export const projects = [
     ],
     languages: ['HTML', 'JavaScript'],
     tools: ['Figma', 'VS Code', 'Git & GitHub'],
-    variant: 3,
-    image: '',
-    tags: ['WIREFRAME', 'FRONTEND', 'WEBSITE'],
+    images: ['lab-multimedia-1.png', 'lab-multimedia-2.png', 'lab-multimedia-3.png'],
     url: '#',
   },
 ];
@@ -135,27 +129,28 @@ export const softSkills = [
 ];
 
 // Pengalaman, pendidikan & prestasi (dari CV)
+//
+// Item yang punya "description" otomatis bisa diklik dan membuka pop-up detail.
+// photos = daftar foto (taruh file di public/images/). File yang belum ada otomatis disembunyikan.
+// url    = link website (khusus EDUCATION); kosongkan '' kalau belum ada.
 export const journey = [
   {
     title: 'ORGANIZATION',
+    listLabel: 'WHAT I DID',
     items: [
       {
         name: 'Human Resource Coordinator',
-        place: 'Polinema Mengajar · Politeknik Negeri Malang',
+        place: 'Polinema Mengajar',
         period: '2025 – 2026',
+        location: 'Politeknik Negeri Malang',
+        description:
+          'Human Resource Coordinator at Polinema Mengajar, Politeknik Negeri Malang — responsible for the organization’s internal member management and development.',
         points: [
           'Managed internal member data, administration and development tracking.',
           'Coordinated HR activities and documented member performance evaluations.',
         ],
-      },
-      {
-        name: 'Head of Committee — Open Recruitment 2026/2027',
-        place: 'Polinema Mengajar',
-        period: '2026',
-        points: [
-          'Led planning and execution of the new board recruitment.',
-          'Coordinated the committee and kept every stage on schedule.',
-        ],
+        // 5 foto kegiatan (ganti nama file sesuai punyamu)
+        photos: ['hr-1.jpg', 'hr-2.jpg', 'hr-3.jpg', 'hr-4.jpg', 'hr-5.jpg'],
       },
     ],
   },
@@ -166,36 +161,46 @@ export const journey = [
         name: 'D-IV Informatics Engineering',
         place: 'Politeknik Negeri Malang · Information Technology Dept.',
         period: '2024 – Now',
-        points: [],
+        url: 'https://www.polinema.ac.id/',
       },
       {
         name: 'Natural Science (IPA)',
         place: 'SMAS Ar-Rohmah Putri International Islamic Boarding School',
         period: '2021 – 2024',
-        points: [],
+        url: '', // TODO: isi link website resmi sekolahmu
       },
     ],
   },
   {
     title: 'ACHIEVEMENTS',
+    listLabel: 'HIGHLIGHTS',
     items: [
       {
         name: 'Finalist — Airlangga Maritime Week',
         place: 'Universitas Airlangga',
         period: '2023',
-        points: ['Solar stove innovation as an alternative energy solution, with supporting paper.'],
+        description:
+          'Finalist at Airlangga Maritime Week, Universitas Airlangga (2023), with a solar stove innovation as an alternative energy solution, supported by a paper.',
+        points: ['Solar stove innovation as an alternative energy solution.', 'Supporting paper submitted for the competition.'],
+        photos: ['amw-1.jpg', 'amw-2.jpg', 'amw-3.jpg'],
       },
       {
         name: 'Delegate — Youth Innovation Forum',
         place: 'Malaysia, Singapore & Thailand',
         period: '2022',
-        points: ['SDGs-themed youth innovation forum and international collaboration.'],
+        description:
+          'Delegate at an SDGs-themed Youth Innovation Forum held across Malaysia, Singapore and Thailand (2022), focused on youth innovation and international collaboration.',
+        points: ['SDGs-themed youth innovation forum.', 'International collaboration with youth from other countries.'],
+        photos: ['yif-1.jpg', 'yif-2.jpg', 'yif-3.jpg'],
       },
       {
         name: 'AIESEC Future Leaders — Batch 9',
         place: 'Universitas Brawijaya',
         period: '2026',
-        points: ['Leadership, self-development and professional CV & essay writing.'],
+        description:
+          'Participant of AIESEC Future Leaders Batch 9 at Universitas Brawijaya (2026), a program on leadership, self-development and professional writing.',
+        points: ['Leadership and self-development training.', 'Professional CV and essay writing.'],
+        photos: ['aiesec-1.jpg', 'aiesec-2.jpg', 'aiesec-3.jpg'],
       },
     ],
   },

@@ -1548,3 +1548,214 @@ button.link-row:hover svg {
 .title-line > * {
   flex: none; /* huruf tidak boleh menyusut, supaya lebar aslinya bisa diukur */
 }
+
+/* ───────── Kartu proyek ringkas ───────── */
+.project {
+  padding: 0;
+}
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 30px 26px 26px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.6s var(--ease);
+}
+.project-card:hover {
+  background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(142, 42, 55, 0.22), transparent 70%);
+}
+.project-card:focus-visible {
+  outline: 1px dashed var(--rose);
+  outline-offset: -8px;
+}
+.project-card-flower {
+  position: absolute;
+  top: -34px;
+  right: -34px;
+  pointer-events: none;
+}
+.project-card .project-no {
+  display: block;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--rose);
+}
+.project-card h3 {
+  margin-top: 22px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(20px, 2vw, 26px);
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  background: linear-gradient(180deg, #ecd0ba 15%, #c49a82 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.project-card .project-desc {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.8;
+  flex: 1;
+}
+.project-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--sand);
+}
+.project-more i {
+  display: inline-block;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--rose);
+}
+
+/* ───────── Galeri foto & lightbox ───────── */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 1), 1fr);
+  gap: 8px;
+}
+.gallery-item {
+  display: block;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: #0e0809;
+  cursor: zoom-in;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.gallery-item:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+.gallery-item:only-child {
+  aspect-ratio: 16 / 9;
+}
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.gallery-item:focus-visible {
+  outline: 1px dashed var(--sand);
+  outline-offset: 2px;
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(6, 3, 4, 0.92);
+  cursor: zoom-out;
+}
+.lightbox img {
+  max-width: min(1100px, 100%);
+  max-height: 88vh;
+  object-fit: contain;
+  border: 1px solid rgba(217, 184, 160, 0.25);
+  cursor: default;
+}
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(217, 184, 160, 0.4);
+  border-radius: 50%;
+  background: rgba(12, 8, 9, 0.7);
+  color: var(--text);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.4s, background 0.4s;
+}
+.lightbox-nav:hover {
+  border-color: var(--rose);
+  background: rgba(179, 74, 90, 0.25);
+}
+.lightbox-nav.prev {
+  left: 16px;
+}
+.lightbox-nav.next {
+  right: 16px;
+}
+.lightbox-count {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+/* ───────── Item journey yang bisa diklik ───────── */
+.journey-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.journey-btn:focus-visible,
+.journey-link:focus-visible {
+  outline: 1px dashed var(--rose);
+  outline-offset: 4px;
+}
+.journey-more,
+.journey-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 9px;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  color: var(--rose);
+  transition: color 0.4s, gap 0.5s var(--ease);
+}
+.journey-more i {
+  font-style: normal;
+  font-size: 15px;
+  line-height: 1;
+  transition: transform 0.5s var(--ease);
+}
+.journey-btn:hover .journey-more {
+  color: var(--sand);
+}
+.journey-btn:hover .journey-more i {
+  transform: rotate(90deg);
+}
+.journey-link:hover {
+  color: var(--sand);
+  gap: 12px;
+}
+.link-row span {
+  overflow-wrap: anywhere;
+}
