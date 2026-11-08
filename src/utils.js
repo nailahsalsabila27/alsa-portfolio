@@ -14,3 +14,12 @@ export function asset(path) {
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
   return `${base}/${s}`;
 }
+
+// Link ke file di folder public/ (mis. CV PDF): 'cv.pdf' -> '/cv.pdf'
+export function fileUrl(name) {
+  if (!name || typeof name !== 'string') return '';
+  const s = name.trim().replace(/\\/g, '/').replace(/^\.?\/?public\//, '').replace(/^\/+/, '');
+  if (/^(https?:)?\/\//.test(s)) return s;
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  return `${base}/${s}`;
+}

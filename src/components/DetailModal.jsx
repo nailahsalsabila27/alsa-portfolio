@@ -19,7 +19,7 @@ const item = {
  * Semua bagian opsional — yang kosong tidak ditampilkan.
  *
  * props: badge, title, subtitle, meta, images[], description, descLabel,
- *        list[], listLabel, groups[{label, items[], solid}], link{url,label}, onClose
+ *        list[] + listLabel  ATAU  lists[{label, items[]}], groups[{label, items[], solid}], link{url,label}, onClose
  */
 export default function DetailModal({
   badge,
@@ -31,6 +31,7 @@ export default function DetailModal({
   descLabel = 'ABOUT',
   list: points = [],
   listLabel = 'HIGHLIGHTS',
+  lists = [],
   groups = [],
   link,
   onClose,
@@ -74,6 +75,7 @@ export default function DetailModal({
 
   const hasLink = link?.url && link.url !== '#';
   const hasImages = images.some(Boolean);
+  const sections = lists.length ? lists : points.length ? [{ label: listLabel, items: points }] : [];
 
   return createPortal(
     <motion.div
@@ -136,18 +138,29 @@ export default function DetailModal({
             </motion.section>
           )}
 
-          {points.length > 0 && (
-            <motion.section variants={item}>
+          {sections.map((sec) => (
+            <motion.section variants={item} key={sec.label}>
               <h4 className="modal-label">
-                {listLabel} <Sparkle size={10} className="spin" />
+                {sec.label} <Sparkle size={10} className="spin" />
               </h4>
               <ul className="modal-list">
-                {points.map((c) => (
-                  <li key={c}>{c}</li>
-                ))}
+                {sec.items.map((c) => {
+                  const i = c.indexOf(' — ');
+                  return (
+                    <li key={c}>
+                      {i > 0 ? (
+                        <>
+                          <b>{c.slice(0, i)}</b> <span className="modal-sep">—</span> {c.slice(i + 3)}
+                        </>
+                      ) : (
+                        c
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </motion.section>
-          )}
+          ))}
 
           {groups.length > 0 && (
             <motion.section variants={item} className="modal-tech">

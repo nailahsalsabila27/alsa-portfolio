@@ -6,6 +6,7 @@ import { Flower, Sparkle } from './Deco';
 import { Handwrite } from '../motion';
 import { ease } from '../motion';
 import { profile } from '../data';
+import { fileUrl } from '../utils';
 
 function Globe() {
   return (
@@ -121,11 +122,20 @@ export default function Hero() {
               <span key={t}>{t}</span>
             ))}
           </p>
-          <a className="pill" href="#contact">
-            <span className="pill-dot" />
-            AVAILABLE FOR PROJECTS
-            <Sparkle size={13} className="spin" />
-          </a>
+          <div className="hero-actions">
+            <a className="pill" href="#contact">
+              <span className="pill-dot" />
+              AVAILABLE FOR PROJECTS
+              <Sparkle size={13} className="spin" />
+            </a>
+            <a
+              className="pill pill-fill"
+              href={fileUrl(profile.cv)}
+              download={`CV-${profile.fullName.replace(/[^\w]+/g, '-')}.pdf`}
+            >
+              DOWNLOAD CV <span className="dl">↓</span>
+            </a>
+          </div>
           <Handwrite className="script hero-sign" delay={1.8}>
             {profile.name}
           </Handwrite>

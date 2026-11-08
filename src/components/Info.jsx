@@ -124,7 +124,7 @@ export function Journey() {
     <section className="panel journey" id="journey">
       <div className="section-head">
         <h2 className="h-label">
-          EXPERIENCE &amp; ACHIEVEMENTS <Sparkle size={13} className="spin" />
+          EXPERIENCE &amp; EDUCATION <Sparkle size={13} className="spin" />
         </h2>
         <span className="link-arrow">CLICK AN ITEM FOR DETAILS</span>
       </div>
@@ -137,7 +137,7 @@ export function Journey() {
                 <JourneyItem
                   key={it.name}
                   it={it}
-                  onOpen={(item) => setActive({ item, listLabel: col.listLabel })}
+                  onOpen={(item) => setActive({ item })}
                 />
               ))}
             </ul>
@@ -169,8 +169,7 @@ export function Journey() {
             images={active.item.photos}
             description={active.item.description}
             descLabel="ABOUT"
-            list={active.item.points}
-            listLabel={active.listLabel}
+            lists={active.item.lists}
             onClose={close}
           />
         )}

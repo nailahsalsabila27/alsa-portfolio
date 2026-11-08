@@ -2,6 +2,7 @@ import { MotionConfig } from 'framer-motion';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import { ProcessAndTools, Journey } from './components/Info';
+import { Gpa, GitHubActivity } from './components/Academic';
 import Contact from './components/Contact';
 import { CursorTrail, FallingPetals, Flower, ScrollProgress } from './components/Deco';
 
@@ -18,6 +19,10 @@ export default function App() {
         <Projects />
         <ProcessAndTools />
         <Journey />
+        <section className="stats-grid">
+          <Gpa />
+          <GitHubActivity />
+        </section>
         <Contact />
       </main>
 
